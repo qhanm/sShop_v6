@@ -16,3 +16,12 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+
+Route::get('test', [\App\Http\Controllers\TestController::class, 'index']);
+
+Route::get('callback', [\App\Http\Controllers\TestController::class, 'callback']);
+
+Route::get('/migrate', function () {
+    dd(\Illuminate\Support\Facades\Artisan::call('migrate'));
+});
