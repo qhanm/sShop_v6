@@ -37,11 +37,12 @@ class TestController extends Controller
         ]);
 
         $helper = $fb->getRedirectLoginHelper();
-
+        $accessToken = $helper->getAccessToken();
+        dd($accessToken);
         try {
-            if (isset($_GET['state'])) {
-                $helper->getPersistentDataHandler()->set('state', $_GET['state']);
-            }
+            //if (isset($_GET['state'])) {
+            //    $helper->getPersistentDataHandler()->set('state', $_GET['state']);
+            //}
             $accessToken = $helper->getAccessToken();
             dd($accessToken);
         } catch(\Facebook\Exceptions\FacebookResponseException $e) {
@@ -51,7 +52,6 @@ class TestController extends Controller
         } catch(\Facebook\Exceptions\FacebookSDKException $e) {
             // When validation fails or other local issues
             echo 'Facebook SDK returned an error: ' . $e->getMessage();
-            exit;
         }
 
         dd($_SERVER, $_GET, $_POST);

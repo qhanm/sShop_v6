@@ -16,8 +16,8 @@ class CreateTableUserSetting extends Migration
         Schema::create('user_setting', function (Blueprint $table) {
             $table->id();
             $table->integer('user_id')->unsigned()->nullable(false);
-            $table->string('fb_access_token', 255);
-            $table->string('fb_account_id', 50);
+            $table->string('fb_access_token', 255)->nullable(true);
+            $table->string('fb_account_id', 50)->nullable(true);
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
 
