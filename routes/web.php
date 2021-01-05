@@ -31,3 +31,8 @@ Route::get('callback', [\App\Http\Controllers\TestController::class, 'callback']
 Route::get('/migrate', function () {
     dd(\Illuminate\Support\Facades\Artisan::call('migrate'));
 });
+
+Route::prefix('auth')->group( function () {
+    Route::get('login', [\App\Http\Controllers\Backend\AuthController::class, 'login'])->name('auth.login');
+    Route::post('login', [\App\Http\Controllers\Backend\AuthController::class, 'checkLogin'])->name('auth.checkLogin');
+});
