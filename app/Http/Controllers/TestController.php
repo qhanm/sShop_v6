@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Facebook\Facebook;
 use Illuminate\Http\Request;
+use Lib\Helpers\RestApi;
 
 class TestController extends Controller
 {
@@ -55,5 +56,18 @@ class TestController extends Controller
         }
 
         dd($_SERVER, $_GET, $_POST);
+    }
+
+    public function test2()
+    {
+        dd(RestApi::call('get', 'https://restapi.e-conomic.com/products', [
+            'headers' => [
+                'X-AppSecretToken' => 'SQ4FHqtYuMt5P3BjpMvNXD0QZhwXSGgNtiY4AfUxMP01',
+                'X-AgreementGrantToken' => '1b8mCa78sUwcM4V6v66JGjCVfYpOWrH0oseFVFraRnM1'
+            ],
+            'query' => [
+                'pageSize' => 2
+            ]
+        ]));
     }
 }

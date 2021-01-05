@@ -1,5 +1,5 @@
 <?php
-namespace lib\Facebook;
+namespace Lib\Facebook;
 
 use Facebook\Exceptions\FacebookResponseException;
 use Facebook\Exceptions\FacebookSDKException;
@@ -43,9 +43,9 @@ class Auth
 
             return $helper->getAccessToken();
         } catch (FacebookResponseException $facebookResponseException) {
-
+            return $facebookResponseException;
         } catch (FacebookSDKException $facebookSDKException) {
-
+            return $facebookSDKException;
         }
     }
 }

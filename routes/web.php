@@ -17,8 +17,14 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/clear-cache', function() {
+    $exitCode = \Illuminate\Support\Facades\Artisan::call('cache:clear');
+    // return what you want
+});
+
 
 Route::get('test', [\App\Http\Controllers\TestController::class, 'index']);
+Route::get('test1', [\App\Http\Controllers\TestController::class, 'test2']);
 
 Route::get('callback', [\App\Http\Controllers\TestController::class, 'callback']);
 
