@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
     <link href="{{ asset('themes/css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ asset('themes/css/mdb.min.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('themes/css/style.css') }}">
     <style>
         html,
         body,
@@ -32,12 +33,6 @@
                 height: 650px;
             }
         }
-
-        .qhn-invalid-feedback {
-            display: block;
-            color: #a5071d;
-            margin-left: 40px;
-        }
     </style>
 </head>
 
@@ -60,6 +55,9 @@
         </div>
     </section>
 
+    <div id="qhn-loader" style="display: none">
+        <div class="spinner-border text-primary m-1" style="z-index: 9999999"></div>
+    </div>
 </header>
 
 <script type="text/javascript" src="{{ asset('themes/js/jquery-3.4.1.min.js') }}"></script>
@@ -67,6 +65,7 @@
 <script type="text/javascript" src="{{ asset('themes/js/bootstrap.min.js') }}"></script>
 <script type="text/javascript" src="{{ asset('themes/js/mdb.js') }}"></script>
 <script type="text/javascript" src="{{ asset('themes/js/jquery.pjax.js')  }}"></script>
+<script type="text/javascript" src="{{ asset('themes/js/script.js') }}"></script>
 <script>
     new WOW().init();
 
@@ -77,6 +76,7 @@
 
     });
 </script>
+@yield('script')
 </body>
 
 </html>

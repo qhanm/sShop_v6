@@ -5,10 +5,9 @@
 @endsection
 
 @section('content')
-    <form action="" method="post">
+    <form action="" method="post" data-pjax id="pjaxLogin">
         @csrf
         <div class="card-body">
-
             <!-- Header -->
             <h3 class="font-weight-500 my-2 py-1 text-center">Log in</h3>
 
@@ -36,6 +35,7 @@
                     name="password"
                     class="form-control"
                     placeholder="Password"
+                    value="{{ old('password') }}"
                 >
                 @error('password')
                     <div class="invalid-feedback qhn-invalid-feedback">{{ $message }}</div>
@@ -59,4 +59,12 @@
 
         </div>
     </form>
+@endsection
+
+@section('script')
+    <script>
+        $(document).on('submit', 'form[data-pjax]', function(event) {
+            $.pjax.submit(event, `#${$(this).attr('id')}`)
+        })
+    </script>
 @endsection

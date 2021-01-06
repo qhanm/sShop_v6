@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\Accounts;
 
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -38,7 +38,7 @@ class User extends Authenticatable
     ];
 
     public function userSetting(){
-        return $this->hasOne(UserSetting::class);
+        return $this->hasMany(UserSetting::class);
     }
 
     public function save(array $options = [])

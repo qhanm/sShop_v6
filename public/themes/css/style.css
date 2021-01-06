@@ -1,1 +1,32 @@
 /* Your custom styles */
+body {
+    position: relative;
+}
+
+#qhn-loader {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background: lightblue;
+    left: 0;
+    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease-in;
+    z-index: 9999;
+    opacity: .5;
+}
+
+.qhn-invalid-feedback {
+    display: block;
+    color: #a5071d;
+    margin-left: 40px;
+}
+
+#qhn-footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+}

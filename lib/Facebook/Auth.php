@@ -8,30 +8,28 @@ use Illuminate\Http\Request;
 
 class Auth
 {
-    protected $facebook;
-
-    public function __construct()
+    public static function prepare()
     {
-        $this->facebook = new Facebook([
+        return new Facebook([
             'app_id' => '709945862992310',
             'app_secret' => '9c824112dfce46a550252a5e8c26c3fc',
             'default_graph_version' => 'v2.3',
         ]);
     }
 
-    public function renderLoginUrl()
+    public static function renderLoginUrl()
     {
-        $facebook = clone $this->facebook;
+        $facebook = clone self::prepare();
         $helper = $facebook->getRedirectLoginHelper();
 
         $permission = ['email'];
 
-        return $helper->getLoginUrl(url('/') . '/callback', $permission);
+        return $helper->getLoginUrl(route('admin.connection.callback'), $permission);
     }
 
-    public function getAccessToken(Request $request)
+    public static function getAccessToken(Request $request)
     {
-        $facebook = clone $this->facebook;
+        $facebook = clone self::prepare();
         $helper = $facebook->getRedirectLoginHelper();
 
         try
@@ -47,5 +45,7 @@ class Auth
         } catch (FacebookSDKException $facebookSDKException) {
             return $facebookSDKException;
         }
+
+        return null;
     }
 }

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Backend;
 
 use App\Components\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class AuthController extends Controller
 {
@@ -20,5 +21,15 @@ class AuthController extends Controller
         ]);
 
         $info = $request->only(['username', 'password']);
+
+        if(\Auth::attempt($info))
+        {
+            return redirect()->route('admin.dashboard.index');
+        }
+
+        $validator = Validator::make([], []);
+        $validator->errors()->add('username', 'Username or password invalid');
+
+        return redirect()->route('auth.login')->withInput()->withErrors($validator);
     }
 }

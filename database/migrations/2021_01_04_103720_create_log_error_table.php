@@ -19,8 +19,9 @@ class CreateLogErrorTable extends Migration
             $table->string('file');
             $table->integer('line')->default(0);
             $table->integer('code')->default(0);
-            $table->string('message');
+            $table->text('message');
             $table->timestamp('created_at')->default(\Illuminate\Support\Facades\DB::raw('CURRENT_TIMESTAMP'));
+            $table->timestamp('updated_at')->default(null);
         });
     }
 
