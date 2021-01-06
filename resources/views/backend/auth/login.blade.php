@@ -1,5 +1,9 @@
 @extends('backend.auth.master')
 
+@section('title')
+    QHN - Login
+@endsection
+
 @section('content')
     <form action="" method="post">
         @csrf
