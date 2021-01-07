@@ -33,4 +33,14 @@ class Graph
             ]
         ]);
     }
+
+    public static function getVideoByUser(int $user_id, string $access_token)
+    {
+        $url = self::setUrl(sprintf('%d/live_videos', $user_id));
+        return RestApi::call('get', $url, [
+            'query' => [
+                'access_token' => $access_token
+            ]
+        ]);
+    }
 }

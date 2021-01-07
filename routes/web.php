@@ -43,5 +43,10 @@ Route::prefix('admin')->group( function () {
     Route::prefix('connection')->middleware(['admin.auth'])->group(function () {
         Route::get('/', [\App\Http\Controllers\Backend\ConnectionController::class, 'index'])->name('admin.connection.index');
         Route::get('callback', [\App\Http\Controllers\Backend\ConnectionController::class, 'callback'])->name('admin.connection.callback');
+        Route::get('delete-info', [\App\Http\Controllers\Backend\ConnectionController::class, 'deleteInfo']);
     });
+});
+
+Route::get('/chinh-sach-rieng-tu', function () {
+    return view('frontend.about');
 });

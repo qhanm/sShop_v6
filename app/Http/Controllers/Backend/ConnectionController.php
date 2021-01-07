@@ -16,6 +16,7 @@ class ConnectionController extends Controller
     public function index()
     {
         $userSettings = \Auth::user()->userSetting()->get();
+
         $renderUrlLogin = Auth::renderLoginUrl();
         return view('backend.connection.index', [
             'renderUrlLogin' => $renderUrlLogin,
@@ -72,5 +73,10 @@ class ConnectionController extends Controller
         }
 
         return redirect()->route('admin.connection.index');
+    }
+
+    public function deleteInfo()
+    {
+        return true;
     }
 }

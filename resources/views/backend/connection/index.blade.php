@@ -30,11 +30,12 @@
                         <img src="{{ $userSetting->fb_avatar }}" class="card-img-top" alt="...">
                         <div class="card-body">
                             <h5 class="card-title text-center">{{ $userSetting->fb_name }}</h5>
-                            <p class="card-text">
-                                Some quick example text to build on the card title and make up the bulk of the card's
-                                content.
-                            </p>
-                            <a href="#" class="btn btn-primary btn-block">Button</a>
+{{--                            <p class="card-text">--}}
+{{--                                Some quick example text to build on the card title and make up the bulk of the card's--}}
+{{--                                content.--}}
+{{--                            </p>--}}
+                            <a href="#" class="btn btn-primary">Go</a>
+                            <a href="#" class="btn btn-danger">Delete</a>
                         </div>
                     </div>
                 @endforeach
