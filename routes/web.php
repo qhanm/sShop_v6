@@ -36,3 +36,12 @@ Route::prefix('auth')->group( function () {
     Route::get('login', [\App\Http\Controllers\Backend\AuthController::class, 'login'])->name('auth.login');
     Route::post('login', [\App\Http\Controllers\Backend\AuthController::class, 'checkLogin'])->name('auth.checkLogin');
 });
+
+Route::prefix('admin')->group( function () {
+    Route::get('dashboard', [\App\Http\Controllers\Backend\DashboardController::class, 'index'])->name('admin.dashboard.index');
+
+    Route::prefix('connection')->middleware(['admin.auth'])->group(function () {
+        Route::get('/', [\App\Http\Controllers\Backend\ConnectionController::class, 'index'])->name('admin.connection.index');
+        Route::get('callback', [\App\Http\Controllers\Backend\ConnectionController::class, 'callback'])->name('admin.connection.callback');
+    });
+});
