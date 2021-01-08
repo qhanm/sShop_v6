@@ -2,7 +2,7 @@
 
 namespace App\Models\Accounts;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Components\Model;
 
 /***
  * Class UserSetting
@@ -14,7 +14,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
  * @property string $fb_avatar
  * @property string $fb_name
  */
-class UserSetting extends \App\Components\Model
+class UserSetting extends Model
 {
     protected $table = 'user_setting';
 
