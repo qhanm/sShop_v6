@@ -56,7 +56,7 @@ class ConnectionController extends Controller
                 $path = FileHelper::createLink('avatars', $me->id . '.jpg');
                 Storage::disk('public')->put($path, $avatar);
                 UserSetting::query()->updateOrCreate(
-                    ['user_id' => \Auth::user()->id],
+                    ['user_id' => \Auth::user()->id, 'fb_account_id' => $me->id],
                     [
                         'fb_access_token' => $accessToken->getValue(),
                         'fb_account_id' => $me->id,
@@ -73,6 +73,13 @@ class ConnectionController extends Controller
         }
 
         return redirect()->route('admin.connection.index');
+    }
+
+    public function getUserVideos(string $fbAccountId)
+    {
+        $userSetting = \Auth::user()->userSetting()->where('fb_account_id', $fbAccountId)->first();
+
+        dd(Graph::getVideoByUser($fbAccountId, $userSetting->fb_access_token));
     }
 
     public function deleteInfo()

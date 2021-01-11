@@ -13,9 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [\App\Http\Controllers\Frontend\HomeController::class, 'index'])->name('frontend.home.index');
 
 Route::get('/clear-cache', function() {
     $exitCode = \Illuminate\Support\Facades\Artisan::call('cache:clear');
@@ -44,6 +42,7 @@ Route::prefix('admin')->group( function () {
         Route::get('/', [\App\Http\Controllers\Backend\ConnectionController::class, 'index'])->name('admin.connection.index');
         Route::get('callback', [\App\Http\Controllers\Backend\ConnectionController::class, 'callback'])->name('admin.connection.callback');
         Route::get('delete-info', [\App\Http\Controllers\Backend\ConnectionController::class, 'deleteInfo']);
+        Route::get('user-videos/{fbAccountId}', [\App\Http\Controllers\Backend\ConnectionController::class, 'getUserVideos'])->name('admin.connection.getUserVideos');
     });
 });
 

@@ -11,9 +11,9 @@ class Auth
     public static function prepare()
     {
         return new Facebook([
-            'app_id' => '709945862992310',
-            'app_secret' => '9c824112dfce46a550252a5e8c26c3fc',
-            'default_graph_version' => 'v2.3',
+            'app_id' => '404833097446659',
+            'app_secret' => '0e0fb49bae1eec0ac57686d56c56930e',
+            'graph_api_version' => 'v9.0',
         ]);
     }
 
@@ -22,9 +22,29 @@ class Auth
         $facebook = clone self::prepare();
         $helper = $facebook->getRedirectLoginHelper();
 
-        $permission = ['email'];
-
+        $permission = [
+            'email',
+            'pages_show_list',
+            'user_videos',
+            'publish_video',
+            'public_profile',
+            'pages_show_list',
+        ];
         return $helper->getLoginUrl(route('admin.connection.callback'), $permission);
+    }
+
+    public static function getMe(string $accessToken)
+    {
+        try{
+            $facebook = clone self::prepare();
+            $response = $facebook->get('/me', $accessToken);
+        } catch(\Facebook\Exceptions\FacebookResponseException $e) {
+            return $e;
+        } catch(\Facebook\Exceptions\FacebookSDKException $e) {
+            return $e;
+        }
+
+        return $response->getGraphUser();
     }
 
     public static function getAccessToken(Request $request)
