@@ -78,8 +78,8 @@ class ConnectionController extends Controller
     public function getUserVideos(string $fbAccountId)
     {
         $userSetting = \Auth::user()->userSetting()->where('fb_account_id', $fbAccountId)->first();
-
-        dd(Graph::getVideoByUser($fbAccountId, $userSetting->fb_access_token));
+        dd(Auth::getUserLiveVideo($fbAccountId, $userSetting->fb_access_token));
+        //dd(Graph::getVideoByUser($fbAccountId, $userSetting->fb_access_token));
     }
 
     public function deleteInfo()

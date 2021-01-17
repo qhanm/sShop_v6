@@ -6,7 +6,7 @@ use Facebook\Exceptions\FacebookSDKException;
 use Facebook\Facebook;
 use Illuminate\Http\Request;
 
-class Auth
+class FacebookLib
 {
     public static function prepare()
     {
@@ -15,6 +15,22 @@ class Auth
             'app_secret' => '9c824112dfce46a550252a5e8c26c3fc',
             'graph_api_version' => 'v9.0',
         ]);
+    }
+
+    public static function call(string $method, string $endpoint, string $accessToken, array $options = [])
+    {
+        $facebook = self::prepare();
+        try{
+            switch ($method)
+            {
+                case 'get':
+                    return $facebook->get($endpoint, $accessToken);
+            }
+        } catch(FacebookResponseException $e) {
+            return $e;
+        } catch(FacebookSDKException $e) {
+            return $e;
+        }
     }
 
     public static function renderLoginUrl()
@@ -30,20 +46,6 @@ class Auth
             'pages_show_list',
         ];
         return $helper->getLoginUrl(route('admin.connection.callback'), $permission);
-    }
-
-    public static function getMe(string $accessToken)
-    {
-        try{
-            $facebook = clone self::prepare();
-            $response = $facebook->get('/me', $accessToken);
-        } catch(\Facebook\Exceptions\FacebookResponseException $e) {
-            return $e;
-        } catch(\Facebook\Exceptions\FacebookSDKException $e) {
-            return $e;
-        }
-
-        return $response->getGraphUser();
     }
 
     public static function getAccessToken(Request $request)
@@ -68,22 +70,19 @@ class Auth
         return null;
     }
 
-    public static function getUserLiveVideo(string $user_id, string $accessToken)
+    public static function getMe(string $accessToken)
     {
-        $facebook = clone self::prepare();
+        $me = self::call('get', '/me', $accessToken);
 
-        try
-        {
-            return $facebook->get(
-                $user_id . '/live_videos',
-                $accessToken
-            );
-        } catch (FacebookResponseException $facebookResponseException) {
-            return $facebookResponseException;
-        } catch (FacebookSDKException $facebookSDKException) {
-            return $facebookSDKException;
+        if($me instanceof \Exception){
+            return $me;
         }
 
-        return null;
+        return $me->getGraphUser();
+    }
+
+    public static function getUserLiveVideo(string $user_id, string $accessToken)
+    {
+        return self::call('get', sprintf('%s/live_videos', $user_id), $accessToken);
     }
 }

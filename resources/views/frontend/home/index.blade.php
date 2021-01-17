@@ -80,7 +80,7 @@
     <!--Navbar-->
     <nav class="navbar fixed-top navbar-expand-lg navbar-dark scrolling-navbar">
         <div class="container">
-            <a class="navbar-brand" href="#"><strong>Navbar</strong></a>
+            <a class="navbar-brand" href="#"><strong>Về đầu trang</strong></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                     aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -89,38 +89,25 @@
                 <!--Links-->
                 <ul class="navbar-nav mr-auto smooth-scroll">
                     <li class="nav-item">
-                        <a class="nav-link" href="#home">Home <span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="#home">Trang chủ <span class="sr-only">(current)</span></a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="#about" data-offset="100">About</a>
+                        <a class="nav-link" href="#about1" data-offset="20">Dịch vụ</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#services" data-offset="30">Services</a>
+                        <a class="nav-link" href="#policy" data-offset="30">Chính sách riêng tư</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#features" data-offset="100">Features</a>
+                        <a class="nav-link" href="#features" data-offset="100">Hỗ trợ</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#pricing" data-offset="30">Pricing</a>
+                        <a class="nav-link" href="#pricing" data-offset="30">Bảng giá dịch vụ</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#offer" data-offset="100">Offer</a>
-                    </li>
+{{--                    <li class="nav-item">--}}
+{{--                        <a class="nav-link" href="#offer" data-offset="100">Offer</a>--}}
+{{--                    </li>--}}
 
-                </ul>
-
-                <!--Social Icons-->
-                <ul class="navbar-nav nav-flex-icons">
-                    <li class="nav-item">
-                        <a class="nav-link"><i class="fab fa-facebook-f"></i></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link"><i class="fab fa-twitter"></i></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link"><i class="fab fa-instagram"></i></a>
-                    </li>
                 </ul>
             </div>
         </div>
@@ -135,7 +122,7 @@
                     <div class="col-md-12 white-text text-center">
                         <div class="wow fadeInDown" data-wow-delay="0.2s">
                             <h1 class="display-4 text-uppercase rgba-black-light px-3 py-2"><strong class="font-weight-bold">Ứng dụng tự động Chốt đơn</strong></h1>
-                            <h5 class="white-text mt-5">Hỗ trợ khách hàng 27/7</h5>
+                            <h5 class="white-text mt-5">Hỗ trợ khách hàng 24/7</h5>
                             <h2 class="white-text text-uppercase h2-responsive font-weight-bold mb-5 mt-4">Tạo đơn và quản lý đơn nhanh chóng</h2>
 {{--                            <a href="#getaquote" data-offset="100" class="btn btn-danger-2 btn-rounded">Get a quote</a>--}}
                         </div>
@@ -150,13 +137,13 @@
 
 <!--Main content-->
 <main>
-
+    <iframe src="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Fquach.nam.77%2Fvideos%2F2774394522838303%2F&width=854" width="854" height="480" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" allowFullScreen="true"></iframe>
     <!--First container-->
     <div class="container-fluid background-z">
         <div class="container">
 
             <!--Section: Possibilities-->
-            <section class="py-4">
+            <section class="py-4" id="about1">
 
                 <!--Secion heading-->
                 <h2 class="text-center text-uppercase font-weight-bold mt-5 pt-4 spacing wow fadeIn" data-wow-delay="0.2s"><strong>Dịch vụ</strong></h2>
@@ -226,15 +213,14 @@
     <div class="container">
 
         <!--Section: About-->
-        <section id="about" class="about my-5">
+        <section id="policy" class="about my-5">
 
             <!--Secion heading-->
-            <h2 class="text-center text-uppercase font-weight-bold mt-5 pt-4 pt-4 spacing wow fadeIn" data-wow-delay="0.2s"><strong>About
-                    us</strong></h2>
+            <h2 class="text-center text-uppercase font-weight-bold mt-5 pt-4 pt-4 spacing wow fadeIn" data-wow-delay="0.2s"><strong>Chính sách riêng tư</strong></h2>
 
             <!--Section description-->
             <p class="text-center text-uppercase font-weight-bold grey-text mb-5 pb-3 wow fadeIn" data-wow-delay="0.2s"><i
-                    class="fas fa-square red-text-2 mr-2" aria-hidden="true"></i> Lorem ipsum dolor sit amet</p>
+                    class="fas fa-square red-text-2 mr-2" aria-hidden="true"></i> Chính sách bảo mật khi sử dụng ứng dụng</p>
 
             <!--First row-->
             <div class="row">
@@ -243,22 +229,17 @@
                 <div class="col-xl-5 col-lg-6 pb-1 wow fadeIn" data-wow-delay="0.4s">
 
                     <!--Description-->
-                    <p align="justify">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo animi soluta ratione
-                        quisquam, dicta
-                        ab cupiditate iure eaque? Repellendus voluptatum, magni impedit eaque animi maxime.
+                    <p align="justify">
+                        Ứng dụng không sử dụng các thông tin các nhân của khách hàng cho mục đích thương mại khác
                     </p>
 
-                    <p align="justify">Nemo animi soluta ratione quisquam, dicta ab cupiditate iure eaque? Repellendus
-                        voluptatum, magni
-                        impedit eaque delectus, beatae maxime temporibus maiores quibusdam quasi rem magnam ad perferendis
-                        iusto sint tempora.</p>
+                    <p align="justify">
+                        Các thông tin được sử dụng là những thông tin cần thiết để khách hàng có thể tạo và quản lý đơn hàng của mình
+                    </p>
 
-                    <ul>
-                        <li>Nemo animi soluta ratione</li>
-                        <li>Beatae maxime temporibus</li>
-                        <li>Consectetur adipisicing elit</li>
-                        <li>Repellendus voluptatum, impedit</li>
-                    </ul>
+                    <p align="justify">
+                        Thông tin của khách hàng sẽ được bảo mật an toàn tuyệt đối
+                    </p>
 
                 </div>
                 <!--/First column-->
@@ -267,7 +248,7 @@
                 <div class="col-xl-6 ml-lg-auto col-lg-6 mb-5 wow fadeIn" data-wow-delay="0.4s">
 
                     <!--Image-->
-                    <img src="https://mdbootstrap.com/img/Photos/Horizontal/Technology/4-col/img%20%288%29.jpg" class="img-fluid rounded z-depth-1"
+                    <img src="{{ asset('themes/img/policy.jpg') }}" class="img-fluid rounded z-depth-1"
                          alt="My photo">
 
                 </div>
@@ -282,97 +263,7 @@
         <hr>
 
         <!--Section: Services-->
-        <section class="mt-5 mb-3" id="services">
 
-            <!--Grid row-->
-            <div class="row mt-5 pt-5 pb-3">
-
-                <!--Grid column-->
-                <div class="col-lg-3 col-md-6">
-
-                    <!--Secion heading-->
-                    <h4 class="font-weight-bold mb-4 wow fadeIn" data-wow-delay="0.2s"><strong class="red-text-2 font-weight-bold"><i
-                                class="fas fa-square red-text-2 mr-2" aria-hidden="true"></i> </strong>Our
-                        Services
-                    </h4>
-
-                    <!--Description-->
-                    <p align="" class="dark-grey-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo animi
-                        soluta ratione quisquam, dicta
-                        ab cupiditate iure eaque? Repellendus voluptatum, magni impedit eaque animi maxime.Soluta ratione
-                        quisquam, dicta ab cupiditate iure eaque? Repellendus voluptatum, magni impedit.
-                    </p>
-
-                </div>
-                <!--Grid column-->
-
-                <!--Grid column-->
-                <div class="col-lg-3 col-md-6 mb-4">
-
-                    <img src="https://mdbootstrap.com/img/Photos/Others/images/31.jpg" class="img-fluid z-depth-1 rounded" alt="sample image">
-
-                    <!--Secion heading-->
-                    <h5 class="font-weight-bold dark-grey-text mt-4 mb-3 wow fadeIn" data-wow-delay="0.2s">Lorem ipsum</h5>
-
-                    <!--Description-->
-                    <p align="justify" class=" font-small">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo animi
-                        soluta ratione quisquam, dicta
-                        ab cupiditate iure eaque.
-                    </p>
-                    <a>
-                        <h6 class="font-weight-bold dark-grey-text font-small"> Read more<i class="fas fa-long-arrow-alt-right ml-2"
-                                                                                            aria-hidden="true"></i></h6>
-                    </a>
-
-                </div>
-                <!--Grid column-->
-
-                <!--Grid column-->
-                <div class="col-lg-3 col-md-6">
-
-                    <img src="https://mdbootstrap.com/img/Photos/Others/images/32.jpg" class="img-fluid z-depth-1 rounded" alt="sample image">
-
-                    <!--Secion heading-->
-                    <h5 class="font-weight-bold dark-grey-text mt-4 mb-3 wow fadeIn" data-wow-delay="0.2s">Lorem ipsum</h5>
-
-                    <!--Description-->
-                    <p align="justify" class=" font-small">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo animi
-                        soluta ratione quisquam, dicta
-                        ab cupiditate iure eaque.
-                    </p>
-                    <a>
-                        <h6 class="font-weight-bold dark-grey-text font-small"> Read more<i class="fas fa-long-arrow-alt-right ml-2"
-                                                                                            aria-hidden="true"></i></h6>
-                    </a>
-
-                </div>
-                <!--Grid column-->
-
-                <!--Grid column-->
-                <div class="col-lg-3 col-md-6">
-
-                    <img src="https://mdbootstrap.com/img/Photos/Others/images/30.jpg" class="img-fluid z-depth-1 rounded" alt="sample image">
-
-                    <!--Secion heading-->
-                    <h5 class="font-weight-bold dark-grey-text mt-4 mb-3 wow fadeIn" data-wow-delay="0.2s">Lorem ipsum</h5>
-
-                    <!--Description-->
-                    <p align="justify" class=" font-small">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo animi
-                        soluta ratione quisquam, dicta
-                        ab cupiditate iure eaque.
-                    </p>
-                    <a>
-                        <h6 class="font-weight-bold dark-grey-text font-small"> Read more<i class="fas fa-long-arrow-alt-right ml-2"
-                                                                                            aria-hidden="true"></i></h6>
-                    </a>
-
-                </div>
-                <!--Grid column-->
-
-            </div>
-            <!--Grid row-->
-
-        </section>
         <!--/Section: Services-->
 
     </div>
@@ -410,7 +301,7 @@
                     <!--Fourth column -->
                     <div class="col-md-3">
                         <h1 class="white-text mb-1 font-weight-bold"><strong>720</strong></h1>
-                        <p>Lorem ipsum dolor</p>
+                        <p>Thành viên</p>
                     </div>
                     <!-- Fourth column -->
 
@@ -467,10 +358,8 @@
                         <i class="fas fa-globe red-text-2 fa-2x"></i>
                     </div>
                     <div class="col-10 col-md-9 col-lg-10 float-right">
-                        <h4 class="font-weight-bold dark-grey-text">Tracking service</h4>
-                        <p class="grey-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit maiores nam,
-                            aperiam
-                            minima assumenda.</p>
+                        <h4 class="font-weight-bold dark-grey-text">Hoàng tiền 100%</h4>
+                        <p class="grey-text">Hoàn tiền nếu không hài lòng với dịch vụ của chúng tôi</p>
                     </div>
                 </div>
                 <!--Grid column-->
@@ -609,7 +498,7 @@
     </div>
     <!--/Fourth container-->
 
-   
+
 
 </main>
 <!--/Main content-->
@@ -626,26 +515,12 @@
             <!--First column-->
             <div class="col-md-4 mt-1 mb-1 wow fadeIn" data-wow-delay="0.3s">
                 <!--About-->
-                <h5 class="title mb-4 font-weight-bold">ABOUT COMPANY</h5>
+                <h5 class="title mb-4 font-weight-bold">Thông tin về chúng tôi</h5>
 
-                <p>Material Design (codenamed Quantum Paper) is a design language developed by Google.</p>
+                <p>Chúng tôi là nhóm nhà phát triển phần mềm với nhiều thành viên có giàu kinh nghiệp.</p>
 
-                <p>Material Design for Bootstrap (MDB) is a powerful Material Design UI KIT for most popular HTML, CSS,
-                    and JS framework - Bootstrap.</p>
+                <p>Team chúng tôi chuyên cung cấp các phần mềm tiện ích và gia công phần mềm theo yêu cầu của khách hàng.</p>
                 <!--/About -->
-
-                <div class="footer-socials mt-2">
-
-                    <!--Facebook-->
-                    <a type="button" class="btn-floating  btn-danger-2"><i class="fab fa-facebook-f"></i></a>
-                    <!--Dribbble-->
-                    <a type="button" class="btn-floating  btn-danger-2"><i class="fab fa-dribbble"></i></a>
-                    <!--Twitter-->
-                    <a type="button" class="btn-floating  btn-danger-2"><i class="fab fa-twitter"></i></a>
-                    <!--Google +-->
-                    <a type="button" class="btn-floating  btn-danger-2"><i class="fab fa-google-plus-g"></i></a>
-
-                </div>
             </div>
             <!--/First column-->
 
@@ -654,23 +529,12 @@
             <!--Second column-->
             <div class="col-lg-3 ml-lg-auto col-md-4 mt-1 mb-1 wow fadeIn" data-wow-delay="0.3s">
                 <!--Search-->
-                <h5 class="text-uppercase mb-4 font-weight-bold">Search something</h5>
-
-                <ul class="footer-search list-unstyled">
-                    <li>
-                        <form class="search-form" role="search">
-                            <div class="md-form">
-                                <input type="text" class="form-control" placeholder="Search">
-                            </div>
-                        </form>
-                    </li>
-                </ul>
+                <h5 class="text-uppercase mb-4 font-weight-bold">Thông tin liên hệ</h5>
 
                 <!--Info-->
-                <p><i class="fas fa-home pr-1"></i> New York, NY 10012, US</p>
-                <p><i class="fas fa-envelope pr-1"></i> info@example.com</p>
-                <p><i class="fas fa-phone pr-1"></i> + 01 234 567 88</p>
-                <p><i class="fas fa-print pr-1"></i> + 01 234 567 89</p>
+                <p><i class="fas fa-home pr-1"></i> 356 Bến Vân Đồn, Phường 1, Quận 4, HCM</p>
+                <p><i class="fas fa-envelope pr-1"></i> qhnam.67@gmail.com</p>
+                <p><i class="fas fa-phone pr-1"></i> + 84 965 586 967</p>
 
             </div>
             <!--/Second column-->
@@ -680,21 +544,16 @@
             <!--Third column-->
             <div class="col-lg-3 ml-lg-auto col-md-4 mt-1 mb-1 wow fadeIn" data-wow-delay="0.3s">
                 <!--Contact-->
-                <h5 class="text-uppercase mb-4 font-weight-bold">Recent news</h5>
+                <h5 class="text-uppercase mb-4 font-weight-bold">Tin tức gần đây</h5>
 
                 <ul class="footer-posts list-unstyled">
-                    <li><a>Ut enim ad minim veniam nostrud.</a><span>
-                <p class="red-text-2 font-small">28 july 2018</p>
-              </span></li>
-                    <li><a>Duis aute dolor in reprehenderit.</a><span>
-                <p class="red-text-2 font-small">27 july 2018</p>
-              </span></li>
-                    <li><a>Excepteur sint occaecat cupidatat.</a><span>
-                <p class="red-text-2 font-small">26 july 2018</p>
-              </span></li>
-                    <li><a>Sed perspiciatis unde omnis iste.</a><span>
-                <p class="red-text-2 font-small">25 july 2018</p>
-              </span></li>
+                    <li>
+                        <a>Bảo trì và nâng cấp hệ thống</a>
+                        <span>
+                            <p class="red-text-2 font-small">01-01-2021</p>
+                        </span>
+                    </li>
+
                 </ul>
 
             </div>
@@ -709,7 +568,7 @@
     <!--Copyright-->
     <div class="footer-copyright py-3 text-center">
         <div class="container-fluid">
-            © 2019 Copyright: <a href="https://mdbootstrap.com/education/bootstrap/" target="_blank"> MDBootstrap.com </a>
+            © 2019 Copyright: <a href="{{ url('/') }}" target="_blank"> MDBootstrap.com </a>
         </div>
     </div>
     <!--/Copyright-->
