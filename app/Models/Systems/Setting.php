@@ -25,4 +25,13 @@ class Setting extends \App\Components\Model
         'meta_value',
         'free_text1'
     ];
+
+    public static function getSettingAppFacebook()
+    {
+         return self::query()->whereIn('meta_key', [
+             self::KEY_FB_APP_ID,
+             self::KEY_FB_APP_SECRET,
+             self::KEY_FB_GRAPH_API_VERSION
+         ])->get();
+    }
 }

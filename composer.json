@@ -15,7 +15,8 @@
         "guzzlehttp/guzzle": "~5.0",
         "jacobbennett/pjax": "^3.0",
         "laravel/framework": "^8.12",
-        "laravel/tinker": "^2.5"
+        "laravel/tinker": "^2.5",
+        "predis/predis": "^1.1"
     },
     "require-dev": {
         "facade/ignition": "^2.5",
