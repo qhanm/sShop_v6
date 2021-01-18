@@ -20,8 +20,12 @@ class CreateTableUserSetting extends Migration
             $table->string('fb_account_id', 50)->nullable(true);
             $table->string('fb_avatar', 255)->nullable(true);
             $table->string('fb_name', 150)->nullable(true);
+            $table->string('fb_video_last_updated', 50)->nullable(true);
+            $table->string('fb_comment_last_updated', 50)->nullable(true);
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
 
+            $table->timestamp('created_at')->default(\Illuminate\Support\Facades\DB::raw('CURRENT_TIMESTAMP'));
+            $table->timestamp('updated_at')->nullable()->default(null);
         });
     }
 

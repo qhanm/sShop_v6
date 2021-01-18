@@ -8,6 +8,7 @@ use App\Models\Accounts\UserSetting;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Lib\Facebook\Auth;
+use Lib\Facebook\FacebookLib;
 use Lib\Facebook\Graph;
 use Lib\Helpers\FileHelper;
 
@@ -55,7 +56,7 @@ class ConnectionController extends Controller
                 $avatar = Graph::getPicture($me->id, $accessToken->getValue());
                 $path = FileHelper::createLink('avatars', $me->id . '.jpg');
                 Storage::disk('public')->put($path, $avatar);
-                UserSetting::query()->updateOrCreate(
+                $userSetting = UserSetting::query()->updateOrCreate(
                     ['user_id' => \Auth::user()->id, 'fb_account_id' => $me->id],
                     [
                         'fb_access_token' => $accessToken->getValue(),
@@ -64,6 +65,8 @@ class ConnectionController extends Controller
                         'fb_name' => $me->name
                     ],
                 );
+
+                dd($userSetting);
             }
         }
 
@@ -78,7 +81,7 @@ class ConnectionController extends Controller
     public function getUserVideos(string $fbAccountId)
     {
         $userSetting = \Auth::user()->userSetting()->where('fb_account_id', $fbAccountId)->first();
-        dd(Auth::getUserLiveVideo($fbAccountId, $userSetting->fb_access_token));
+        dd(FacebookLib::getUserLiveVideo($userSetting));
         //dd(Graph::getVideoByUser($fbAccountId, $userSetting->fb_access_token));
     }
 

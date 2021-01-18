@@ -1,6 +1,7 @@
 <?php
 namespace Lib\Facebook;
 
+use App\Models\Accounts\UserSetting;
 use Facebook\Exceptions\FacebookResponseException;
 use Facebook\Exceptions\FacebookSDKException;
 use Facebook\Facebook;
@@ -66,8 +67,6 @@ class FacebookLib
         } catch (FacebookSDKException $facebookSDKException) {
             return $facebookSDKException;
         }
-
-        return null;
     }
 
     public static function getMe(string $accessToken)
@@ -81,8 +80,31 @@ class FacebookLib
         return $me->getGraphUser();
     }
 
-    public static function getUserLiveVideo(string $user_id, string $accessToken)
+    public static function getUserLiveVideo(UserSetting $userSetting)
     {
-        return self::call('get', sprintf('%s/live_videos', $user_id), $accessToken);
+        $fields = [
+            'description',
+            'seconds_left',
+            'title',
+            'creation_time',
+            'published',
+            'targeting',
+            'content_tags',
+            'from',
+            'live_views',
+            'secure_stream_url',
+            'status'
+        ];
+
+        $filtering = [
+            'since' => !empty($userSetting->fb_video_last_updated) ? $userSetting->fb_video_last_updated : strtotime(date('2015-01-01 00:00:00')),
+            'until' => strtotime(date('Y-m-d H:i:s')),
+        ];
+
+        $query = http_build_query([
+            'fields' => implode(',', $fields)]
+        ) . '&' . http_build_query($filtering);
+
+        return self::call('get', sprintf('%s/live_videos?%s', $userSetting->fb_account_id, $query), $userSetting->fb_access_token);
     }
 }

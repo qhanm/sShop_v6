@@ -13,6 +13,10 @@ use App\Components\Model;
  * @property string $fb_account_id
  * @property string $fb_avatar
  * @property string $fb_name
+ * @property string $fb_comment_last_updated
+ * @property string $fb_video_last_updated
+ * @property string $created_at
+ * @property string $updated_at
  */
 class UserSetting extends Model
 {
@@ -24,9 +28,9 @@ class UserSetting extends Model
         'fb_account_id',
         'fb_avatar',
         'fb_name',
+        'fb_comment_last_updated',
+        'fb_video_last_updated'
     ];
-
-    public $timestamps = false;
 
     public function user(){
         return $this->belongsTo(User::class);

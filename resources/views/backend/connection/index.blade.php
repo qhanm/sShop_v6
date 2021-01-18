@@ -22,26 +22,22 @@
         @endif
 
         <section class="mb-5">
-
             <div class="row border p-4 d-flex mb-4">
                 <!-- Subheading -->
                 @foreach($userSettings as $userSetting)
-                    <div class="card" style="max-width: 22rem">
-                        <img src="{{ $userSetting->fb_avatar }}" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title text-center">{{ $userSetting->fb_name }}</h5>
-{{--                            <p class="card-text">--}}
-{{--                                Some quick example text to build on the card title and make up the bulk of the card's--}}
-{{--                                content.--}}
-{{--                            </p>--}}
-                            <a href="{{ route('admin.connection.getUserVideos', ['fbAccountId' => $userSetting->fb_account_id]) }}" class="btn btn-primary">Go</a>
-                            <a href="#" class="btn btn-danger">Delete</a>
-                        </div>
+                    <div class="col-md-3 mb-3">
+                        <section>
+                            <div class="card">
+                                <img class="card-img-top" src="{{ $userSetting->fb_avatar }}" alt="Card image cap">
+                                <div class="card-body">
+                                    <h4 class="card-title"><strong>{{ $userSetting->fb_name }}</strong></h4>
+                                    <a href="{{ route('admin.connection.getUserVideos', ['fbAccountId' => $userSetting->fb_account_id]) }}" class="btn btn-primary">Go</a>
+                                </div>
+                            </div>
+                        </section>
                     </div>
                 @endforeach
-
             </div>
-
         </section>
     </div>
 
