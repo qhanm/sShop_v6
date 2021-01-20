@@ -2,6 +2,8 @@
 
 namespace App\Models\Systems;
 
+use Illuminate\Support\Facades\Cache;
+
 /***
  * Class Setting
  * @package App\Models\Systems
@@ -16,6 +18,8 @@ class Setting extends \App\Components\Model
     const KEY_FB_APP_SECRET = 'fb_app_secret';
     const KEY_FB_GRAPH_API_VERSION = 'fb_graph_api_version';
 
+    const CACHE_KEY_GET_SETTING_APP_FACEBOOK = 'getSettingAppFacebook';
+
     protected $table = 'setting';
 
     public $timestamps = false;
@@ -28,10 +32,12 @@ class Setting extends \App\Components\Model
 
     public static function getSettingAppFacebook()
     {
-         return self::query()->whereIn('meta_key', [
-             self::KEY_FB_APP_ID,
-             self::KEY_FB_APP_SECRET,
-             self::KEY_FB_GRAPH_API_VERSION
-         ])->get();
+        return Cache::remember(self::CACHE_KEY_GET_SETTING_APP_FACEBOOK, 216000, function () {
+            return self::query()->whereIn('meta_key', [
+                self::KEY_FB_APP_ID,
+                self::KEY_FB_APP_SECRET,
+                self::KEY_FB_GRAPH_API_VERSION
+            ])->get();
+        });
     }
 }

@@ -7,6 +7,7 @@ use App\Models\Logs\LogError;
 use App\Models\Accounts\UserSetting;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Lib\Facebook\Api\FacebookRest;
 use Lib\Facebook\Auth;
 use Lib\Facebook\FacebookLib;
 use Lib\Facebook\Graph;
@@ -16,6 +17,7 @@ class ConnectionController extends Controller
 {
     public function index()
     {
+        FacebookRest::prepare();
         $userSettings = \Auth::user()->userSetting()->get();
 
         $renderUrlLogin = Auth::renderLoginUrl();
