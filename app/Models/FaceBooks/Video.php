@@ -2,6 +2,7 @@
 
 namespace App\Models\FaceBooks;
 
+use App\Components\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 /***
@@ -9,13 +10,13 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
  * @package App\Models\FaceBooks
  * @property integer $id
  * @property integer $user_setting_id
- * @property string $live_videos
+ * @property string $live_views
  * @property string $status
  * @property string $creation_time
  * @property string $created_at
  * @property string $updated_at
  */
-class Video extends \App\Components\Model
+class Video extends Model
 {
     use HasFactory;
 
@@ -24,7 +25,7 @@ class Video extends \App\Components\Model
     protected $fillable = [
         'id',
         'user_setting_id',
-        'live_videos',
+        'live_views',
         'status',
         'creation_time',
     ];

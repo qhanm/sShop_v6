@@ -13,3 +13,6 @@ mongo --version
     mongodb://127.0.0.1:27017/test
 ---- Show list databse
     show dbs OR show databases
+---- Create user 
+    use {database name}
+    db.createUser({ user: "fb_app_user", pwd: "123456", roles: ["readWrite"] })

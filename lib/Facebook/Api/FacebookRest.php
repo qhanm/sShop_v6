@@ -2,11 +2,13 @@
 namespace Lib\Facebook\Api;
 
 use App\Models\Accounts\UserSetting;
+use App\Models\Logs\LogError;
 use App\Models\Systems\Setting;
 use Facebook\Exceptions\FacebookResponseException;
 use Facebook\Exceptions\FacebookSDKException;
 use Facebook\Facebook;
 use Illuminate\Http\Request;
+use Lib\Helpers\RestApi;
 
 class FacebookRest
 {
@@ -34,6 +36,13 @@ class FacebookRest
         return new Facebook($config);
     }
 
+    /**
+     * @param string $method
+     * @param string $endpoint
+     * @param string $accessToken
+     * @param array $options
+     * @return \Facebook\FacebookResponse|false
+     */
     public static function call(string $method, string $endpoint, string $accessToken, array $options = [])
     {
         $facebook = self::prepare();
@@ -44,12 +53,17 @@ class FacebookRest
                     return $facebook->get($endpoint, $accessToken);
             }
         } catch(FacebookResponseException $e) {
-            return $e;
+            LogError::logException($endpoint, $e);
+            return false;
         } catch(FacebookSDKException $e) {
-            return $e;
+            LogError::logException($endpoint, $e);
+            return false;
         }
     }
 
+    /**
+     * @return string
+     */
     public static function renderLoginUrl()
     {
         $facebook = clone self::prepare();
@@ -79,9 +93,11 @@ class FacebookRest
 
             return $helper->getAccessToken();
         } catch (FacebookResponseException $facebookResponseException) {
-            return $facebookResponseException;
+            LogError::logException('getAccessToken', $facebookResponseException);
+            return false;
         } catch (FacebookSDKException $facebookSDKException) {
-            return $facebookSDKException;
+            LogError::logException('getAccessToken', $facebookSDKException);
+            return false;
         }
     }
 
@@ -122,5 +138,14 @@ class FacebookRest
             ) . '&' . http_build_query($filtering);
 
         return self::call('get', sprintf('%s/live_videos?%s', $userSetting->fb_account_id, $query), $userSetting->fb_access_token);
+    }
+
+    public static function getPicture(int $user_id, string $access_token, int $width = 160, int $height = 160)
+    {
+        $query = http_build_query([
+            'width' => $width,
+            'height' => $height
+        ]);
+        return self::call('get', sprintf('%s/picture?%s', $user_id, $query), $access_token);
     }
 }

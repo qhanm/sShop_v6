@@ -3,21 +3,24 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
+use App\Jobs\SyncVideo;
 use App\Models\Logs\LogError;
 use App\Models\Accounts\UserSetting;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Storage;
 use Lib\Facebook\Api\FacebookRest;
 use Lib\Facebook\Auth;
 use Lib\Facebook\FacebookLib;
 use Lib\Facebook\Graph;
+use Lib\Facebook\Models\LiveVideo;
 use Lib\Helpers\FileHelper;
 
 class ConnectionController extends Controller
 {
     public function index()
     {
-        FacebookRest::prepare();
+        //dd(LogError::query()->get()->toArray());
         $userSettings = \Auth::user()->userSetting()->get();
 
         $renderUrlLogin = Auth::renderLoginUrl();
@@ -30,45 +33,39 @@ class ConnectionController extends Controller
     public function callback(Request $request)
     {
         $isError = false;
-        $accessToken = Auth::getAccessToken($request);
+        $accessToken = FacebookRest::getAccessToken($request);
 
-        if($accessToken instanceof \Exception)
-        {
-            // add log
-            LogError::logException(LogError::FB_GET_ACCESS_TOKEN, $accessToken);
-            $isError = true;
-        }
-
-        if($accessToken === null)
+        if($accessToken === false)
         {
             $isError = true;
         }
         else
         {
-            $me = Graph::getMe($accessToken->getValue());
+            $me = FacebookRest::getMe($accessToken->getValue());
 
-            if($me instanceof \Exception)
+            if($me === false)
             {
-                LogError::logException(LogError::FB_GET_ME, $me);
                 $isError = true;
             }
             else
             {
                 $me = json_decode($me);
                 $avatar = Graph::getPicture($me->id, $accessToken->getValue());
+
                 $path = FileHelper::createLink('avatars', $me->id . '.jpg');
-                Storage::disk('public')->put($path, $avatar);
+                Storage::disk()->put($path, $avatar);
+
                 $userSetting = UserSetting::query()->updateOrCreate(
                     ['user_id' => \Auth::user()->id, 'fb_account_id' => $me->id],
                     [
                         'fb_access_token' => $accessToken->getValue(),
                         'fb_account_id' => $me->id,
-                        'fb_avatar' => url('/') . Storage::url($path),
+                        'fb_avatar' => FileHelper::createFullPathUrlUpload($path),
                         'fb_name' => $me->name
                     ],
                 );
 
-                dd($userSetting);
+                SyncVideo::dispatch($userSetting)->delay(Carbon::now()->addSeconds(90));
             }
         }
 
@@ -83,8 +80,13 @@ class ConnectionController extends Controller
     public function getUserVideos(string $fbAccountId)
     {
         $userSetting = \Auth::user()->userSetting()->where('fb_account_id', $fbAccountId)->first();
-        dd(FacebookLib::getUserLiveVideo($userSetting));
-        //dd(Graph::getVideoByUser($fbAccountId, $userSetting->fb_access_token));
+        $response = FacebookLib::getUserLiveVideo($userSetting);
+        $fb = FacebookRest::prepare();
+        //dd($fb->next($response->getGraphEdge()));
+        //dd($response->getGraphEdge());
+        LiveVideo::syncLiveVideo($userSetting, $response->getDecodedBody());
+        dd($response->getDecodedBody());
+
     }
 
     public function deleteInfo()
