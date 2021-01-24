@@ -27,6 +27,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         Queue::after(function (JobProcessed $event) {
+            dd(json_decode($event->job->getRawBody()));
             LogError::logException('queue', new \Exception('null'), ['event' => $event, $event->job->getRawBody()]);
         });
     }

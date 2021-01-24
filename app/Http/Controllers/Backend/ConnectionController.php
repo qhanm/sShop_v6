@@ -65,7 +65,7 @@ class ConnectionController extends Controller
                     ],
                 );
 
-                SyncVideo::dispatch($userSetting)->delay(Carbon::now()->addSeconds(90));
+                SyncVideo::dispatch($userSetting)->delay(Carbon::now()->addSeconds(10));
             }
         }
 
